@@ -10,8 +10,6 @@ class TestCoffeeMachine_plus(unittest.TestCase):
         self.machine = CoffeeMachinePlus()
 
     def test_no_coin(self):
-        # with self.assertRaises(NoCoinException):
-        #     self.machine.get_product('simple_coffee',0)
         self.assertFalse(self.machine.get_product('simple_coffee', 0))
 
     def test_insert_coin(self):
@@ -104,6 +102,15 @@ class TestCoffeeMachine_plus(unittest.TestCase):
         self.machine.refill('sugar', 30)
         self.machine.insert_coin()
         self.assertFalse(self.machine.get_product('simple_coffee', 3))
+
+    def test_low_sugar(self):
+        self.machine.refill('sugar', 1)
+        self.machine.insert_coin()
+        self.assertFalse(self.machine.get_product('simple_coffee', 1))
+
+    def test_0_coins(self):
+        self.machine.refill('sugar', 30)
+        self.assertFalse(self.machine.get_product('simple_coffee', 1))
 
 
 if __name__ == "__main__":
