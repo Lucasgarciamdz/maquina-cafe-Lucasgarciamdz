@@ -112,6 +112,27 @@ class TestCoffeeMachine_plus(unittest.TestCase):
         self.machine.refill('sugar', 30)
         self.assertFalse(self.machine.get_product('simple_coffee', 1))
 
+    #test line 57
+    def test_no_sugar(self):
+        self.machine.refill('sugar', 0)
+        self.machine.insert_coin()
+        self.assertFalse(self.machine.get_product('simple_coffee', 1))
+
+    def test_no_milk(self):
+        self.machine.refill('milk', 0)
+        self.machine.insert_coin()
+        self.assertFalse(self.machine.get_product('simple_milk_coffee', 1))
+
+    def test_no_coffee(self):
+        self.machine.refill('coffee', 0)
+        self.machine.insert_coin()
+        self.assertFalse(self.machine.get_product('simple_coffee', 1))
+    
+    def test_no_tea(self):
+        self.machine.refill('tea', 0)
+        self.machine.insert_coin()
+        self.assertFalse(self.machine.get_product('tea', 1))
+
 
 if __name__ == "__main__":
     unittest.main()
