@@ -1,6 +1,3 @@
-from exceptions_coffee_machine_plus import *
-
-
 class CoffeeMachinePlus:
 
     def __init__(self):

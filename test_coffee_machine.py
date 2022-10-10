@@ -1,7 +1,6 @@
 import unittest
 
 from coffee_machine_plus import CoffeeMachinePlus
-from exceptions_coffee_machine_plus import *
 
 
 class TestCoffeeMachine_plus(unittest.TestCase):
@@ -112,7 +111,6 @@ class TestCoffeeMachine_plus(unittest.TestCase):
         self.machine.refill('sugar', 30)
         self.assertFalse(self.machine.get_product('simple_coffee', 1))
 
-    #test line 57
     def test_no_sugar(self):
         self.machine.refill('sugar', 0)
         self.machine.insert_coin()
@@ -127,7 +125,7 @@ class TestCoffeeMachine_plus(unittest.TestCase):
         self.machine.refill('coffee', 0)
         self.machine.insert_coin()
         self.assertFalse(self.machine.get_product('simple_coffee', 1))
-    
+
     def test_no_tea(self):
         self.machine.refill('tea', 0)
         self.machine.insert_coin()
