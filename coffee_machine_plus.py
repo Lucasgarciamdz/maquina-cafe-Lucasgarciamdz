@@ -45,16 +45,19 @@ class CoffeeMachinePlus:
         self.resources[type] += amount
 
     def get_product(self, product_type, sugar_level):
-        recipie = self.recipies[product_type]
         sugar = 3 * sugar_level
+        self.check_resources(product_type)
+        if self.resources['sugar'] < sugar:
+            return False
+        self.resources['coin'] -= 1
+        self.resources['sugar'] -= sugar
+        return True
+
+    def check_resources(self, product_type):
+        recipie = self.recipies[product_type]
         for resource in recipie:
             if self.resources[resource] < recipie[resource]:
                 return False
-            else:
-                self.resources[resource] -= recipie[resource]
-        if self.resources['coin'] == 0 or self.resources['sugar'] < sugar:
+        if self.resources['coin'] == 0:
             return False
-        else:
-            self.resources['coin'] -= 1
-            self.resources['sugar'] -= sugar
         return True

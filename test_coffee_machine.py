@@ -133,6 +133,12 @@ class TestCoffeeMachine_plus(unittest.TestCase):
         self.machine.insert_coin()
         self.assertFalse(self.machine.get_product('tea', 1))
 
+    def test_missing_resource(self):
+        self.machine.refill('coffee', 15)
+        self.machine.insert_coin()
+        self.assertFalse(self.machine.get_product('simple_milk_coffee', 1))
+        self.assertEqual(self.machine.resources['coffee'], 15)
+
 
 if __name__ == "__main__":
     unittest.main()
