@@ -35,7 +35,10 @@ class CoffeeMachinePlus:
             'milk_chocolate': {
                 'chocolate': 10,
                 'milk': 10
-            }
+            },
+            'double_chocolate': {
+                'chocolate': 40,
+            },
         }
 
     def insert_coin(self):
