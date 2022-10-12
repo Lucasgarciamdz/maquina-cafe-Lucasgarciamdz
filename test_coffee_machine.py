@@ -109,11 +109,13 @@ class TestCoffeeMachine_plus(unittest.TestCase):
 
     def test_0_coins(self):
         self.machine.refill('sugar', 30)
+        self.machine.refill('coffee', 30)
         self.assertFalse(self.machine.get_product('simple_coffee', 1))
 
     def test_no_sugar(self):
         self.machine.refill('sugar', 0)
         self.machine.insert_coin()
+        self.machine.refill('coffee', 30)
         self.assertFalse(self.machine.get_product('simple_coffee', 1))
 
     def test_no_milk(self):
