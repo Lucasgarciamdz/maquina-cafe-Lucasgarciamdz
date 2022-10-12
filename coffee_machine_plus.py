@@ -50,12 +50,14 @@ class CoffeeMachinePlus:
         for resource in recipie:
             if self.resources[resource] < recipie[resource]:
                 return False
+            else:
+                self.resources[resource] -= recipie[resource]
         if self.resources['coin'] == 0:
             return False
+        else:
+            self.resources['coin'] -= 1
         if self.resources['sugar'] < sugar:
             return False
-        for resource in recipie:
-            self.resources[resource] -= recipie[resource]
-        self.resources['coin'] -= 1
-        self.resources['sugar'] -= sugar
+        else:
+            self.resources['sugar'] -= sugar
         return True
