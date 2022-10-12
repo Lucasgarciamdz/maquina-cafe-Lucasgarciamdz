@@ -19,9 +19,6 @@ jobs:
           name: Running Tests
           command: coverage run -m unittest && coverage xml && coverage report -m
       - run:
-          name: Generate HTML report
-          command: coverage html
-      - run:
           name: Update CodeClimate coverage report
           command: |
               ./cc-test-reporter after-build
